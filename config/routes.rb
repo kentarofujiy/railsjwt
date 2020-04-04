@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   get "/user_is_authed", to: "auth#user_is_authed"
   get "/groceries", to: "groceries#index"
   post "/groceries", to: "groceries#create"
-  #resources :groceries
+  resources :groceries
   resources :books
 end

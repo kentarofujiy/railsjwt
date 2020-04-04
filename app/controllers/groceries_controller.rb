@@ -1,5 +1,5 @@
 class GroceriesController < ApplicationController
-    before_action :require_login, except: [:index, :create]
+  before_action :require_login, except: [:index, :create, :show]
   before_action :set_grocery, only: [:show, :update, :destroy]
 
   # GET /groceries
@@ -13,6 +13,8 @@ class GroceriesController < ApplicationController
   # GET /groceries/1
   # GET /groceries/1.json
   def show
+    @grocery = Grocery.find(params[:id])
+    render json: @grocery, status: 200
   end
 
   # POST /groceries
