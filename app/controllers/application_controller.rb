@@ -21,6 +21,7 @@ class ApplicationController < ActionController::API
     end
 
     def session_user
+                   puts "require"
         decoded_hash = decoded_token
         if !decoded_hash.empty? 
             puts decoded_hash.class
@@ -36,6 +37,7 @@ class ApplicationController < ActionController::API
     end
 
     def require_login
-     render json: {message: 'Please Login'}, status: :unauthorized unless logged_in?
+      render json: {message: 'Please Login'}, status: :unauthorized unless logged_in?
+    
     end
 end
