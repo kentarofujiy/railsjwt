@@ -1,5 +1,5 @@
 class GroceriesController < ApplicationController
-  before_action :require_login, except: [:index, :create, :show]
+  before_action :require_login, except: [:index, :create, :show, :destroy]
   before_action :set_grocery, only: [:show, :update, :destroy]
 
   # GET /groceries
@@ -7,14 +7,14 @@ class GroceriesController < ApplicationController
   def index
     userid = params[:user_id]
     @groceries = Grocery.where("user_id = ?", userid )
-    render json: @groceries
+    #render json: @groceries
   end
 
   # GET /groceries/1
   # GET /groceries/1.json
   def show
     @grocery = Grocery.find(params[:id])
-    render json: @grocery, status: 200
+    #render json: @grocery, status: 200
   end
 
   # POST /groceries
@@ -54,6 +54,6 @@ class GroceriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def grocery_params
-      params.require(:grocery).permit(:name, :user_id)
+      params.require(:grocery).permit(:name, :user_id, :image)
     end
 end
